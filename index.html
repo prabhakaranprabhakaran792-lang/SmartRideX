@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransitX - Smart Public Transport</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body class="login-page">
+
+  <div class="login-container">
+
+    <div class="logo">
+      <i class="fa-solid fa-bus"></i>
+      <h1>TransitX</h1>
+      <p>Smart Public Transport Tracking System</p>
+      <div class="live-info">
+    <div class="clock-card">
+        <h3>🕒 Current Time</h3>
+        <p id="liveClock">00:00:00</p>
+    </div>
+
+    <div class="date-card">
+        <h3>📅 Today</h3>
+        <p id="liveDate">Loading...</p>
+    </div>
+</div>
+    </div>
+
+    <form id="loginForm" class="login-card">
+
+      <h2>Welcome Back</h2>
+
+      <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username"
+          required>
+      </div>
+
+      <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter Password"
+          required>
+      </div>
+
+      <button type="submit" class="login-btn">
+        Login
+      </button>
+
+      <p class="note">
+        Demo Login <br>
+        Username: <b>admin</b><br>
+        Password: <b>1234</b>
+      </p>
+
+    </form>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

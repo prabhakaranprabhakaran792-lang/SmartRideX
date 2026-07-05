@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TransitX - Live Tracking</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+  <button id="darkBtn" onclick="toggleDarkMode()">
+    🌙 Dark Mode
+</button>
+
+<header class="topbar">
+    <div class="logo">
+        <i class="fa-solid fa-bus"></i>
+        <h2>TransitX</h2>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </button>
+</header>
+
+<section class="hero">
+
+    <h1>Smart Public Transport Tracking</h1>
+    <div class="live-info">
+    <div class="clock-card">
+        <h3>🕒 Current Time</h3>
+        <p id="liveClock">00:00:00</p>
+    </div>
+
+    <div class="date-card">
+        <h3>📅 Today</h3>
+        <p id="liveDate">Loading...</p>
+    </div>
+</div>
+
+    <p>
+        Track buses in real time, search routes and estimate arrival time.
+    </p>
+
+</section>
+
+<div class="dashboard">
+
+    <div class="left-panel">
+
+        <div class="card">
+
+            <h3>
+                <i class="fa-solid fa-route"></i>
+                Route Search
+            </h3>
+
+            <input
+                type="text"
+                id="source"
+                placeholder="Enter Source">
+
+            <input
+                type="text"
+                id="destination"
+                placeholder="Enter Destination">
+
+            <button onclick="searchRoute()">
+                Search Route
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h3>
+                <i class="fa-solid fa-clock"></i>
+                Estimated Arrival
+            </h3>
+
+            <h2 id="eta">
+                -- Minutes
+            </h2>
+
+        </div>
+<div class="progress-card">
+    <h3>🚌 Journey Progress</h3>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p id="progressText">0% Completed</p>
+</div>
+<div class="weather-card">
+    <h3>🌤 Weather</h3>
+    <p><strong>Condition:</strong> Sunny</p>
+    <p><strong>Temperature:</strong> <span id="temp">32°C</span></p>
+    <p><strong>Humidity:</strong> 65%</p>
+</div>
+<div class="card">
+    <h3>💰 Fare Calculator</h3>
+
+    <p><strong>Estimated Fare:</strong></p>
+
+    <h2 id="fare">₹ 25</h2>
+
+    <button onclick="calculateFare()">Calculate Fare</button>
+    <div class="card">
+    
+    <h3>
+        <i class="fa-solid fa-bus"></i>
+        Bus Information
+    </h3>
+             <h3>
+               <i class="fa-solid fa-couch"></i>
+  <h3>
+    <i class="fa-solid fa-couch"></i>
+    <div class="card">
+    <h3>🔔 Travel Alert</h3>
+
+    <p id="alertMessage">
+        ✅ Bus is running on time.
+    </p>
+</div>
+<div class="card">
+    Seat Availability
+</h3>             
+<p><strong>Occupancy :</strong> <span id="occupancy">62%</span></p>
+</h3>
+<p><strong>Seats Available :</strong> <span id="seatCount">25 / 40</span></p>
+
+<div class="seat-bar">
+    <div class="seat-fill" id="seatFill"></div>
+</div>
+            <p>
+                <strong>Bus No :</strong>
+                TX-101
+            </p>
+
+            <p>
+                <strong>Status :</strong>
+                Running
+            </p>
+
+            <p>
+                <strong>Speed :</strong>
+                42 km/h
+            </p>
+
+            <button onclick="refreshLocation()">
+                Refresh Location
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="right-panel">
+
+        <div id="map"></div>
+
+    </div>
+
+</div>
+<!-- Bottom Information Cards -->
+
+<section class="info-section">
+
+    <div class="info-card">
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>Current Location</h3>
+        <p id="currentLocation">Detecting your location...</p>
+    </div>
+
+    <div class="info-card">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <h3>Destination</h3>
+        <p id="destinationName">Not Selected</p>
+    </div>
+
+    <div class="info-card">
+        <i class="fa-solid fa-clock"></i>
+        <h3>Estimated Time</h3>
+        <p id="arrivalTime">-- Minutes</p>
+    </div>
+
+</section>
+
+<footer class="footer">
+    <p>© 2026 TransitX | Smart Public Transport Tracking System</p>
+</footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
+
